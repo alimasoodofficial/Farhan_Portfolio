@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { login } from "./actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,20 +11,29 @@ import { Leaf, ArrowRight, ArrowLeft, Loader2, ShieldCheck, Eye, EyeOff } from "
 import { toast } from "sonner";
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulate authentication process
-    setTimeout(() => {
-      toast.success("Signed in successfully");
-      router.push("/admin");
-    }, 1200);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+
+    const result = await login(formData);
+
+    // If we get here, it means login returned an error
+    // (successful login redirects and never returns)
+    if (result?.error) {
+      setError(result.error);
+      toast.error(result.error);
+    }
+
+    setIsLoading(false);
   };
+
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-background">
       {/* Left side - Visual/Brand (Hidden on mobile) */}
@@ -91,10 +100,16 @@ export default function AdminLoginPage() {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-5">
+                {error && (
+                  <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-sm font-medium animate-in fade-in slide-in-from-top-2 duration-300">
+                    {error}
+                  </div>
+                )}
                 <div className="space-y-2.5">
                   <Label htmlFor="email" className="font-medium">Email Address</Label>
                   <Input 
                     id="email" 
+                    name="email"
                     type="email" 
                     placeholder="admin@example.com" 
                     required 
@@ -104,13 +119,11 @@ export default function AdminLoginPage() {
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="password" className="font-medium">Password</Label>
-                    <Link href="#" className="text-sm font-medium text-brand hover:text-brand/80 transition-colors">
-                      Forgot password?
-                    </Link>
                   </div>
                   <div className="relative">
                     <Input 
                       id="password" 
+                      name="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="••••••••" 
                       required 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { logout } from "./login/actions";
 import { LayoutDashboard, Wrench, MessageSquareQuote, Newspaper, Calendar, User, BookOpen, ArrowLeft, Leaf, LogOut, type LucideIcon } from "lucide-react";
 
 interface NavItem {
@@ -63,9 +64,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:bg-sidebar-accent">
             <ArrowLeft className="size-4" /> Back to site
           </Link>
-          <Link href="/admin/login" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-red-500 hover:bg-red-500/10 hover:text-red-600 transition-colors">
+          <button
+            onClick={() => logout()}
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-red-500 hover:bg-red-500/10 hover:text-red-600 transition-colors"
+          >
             <LogOut className="size-4" /> Sign out
-          </Link>
+          </button>
         </div>
       </aside>
 
