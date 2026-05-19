@@ -41,7 +41,7 @@ export default function BlogsAdmin() {
         <Panel className="p-5">
           <div className="font-semibold">Publish</div>
           <div className="mt-3 space-y-2 text-sm">
-            <button className="w-full rounded-lg bg-brand py-2 font-semibold text-brand-foreground hover:scale-[1.02] transition">Publish</button>
+            <button className="w-full rounded-lg bg-brand-gradient hover:bg-brand-gradient-hover py-2 font-semibold text-brand-foreground hover:scale-[1.02] transition shadow-md">Publish</button>
             <button className="w-full rounded-lg border border-border py-2 font-medium hover:bg-muted">Save draft</button>
           </div>
         </Panel>

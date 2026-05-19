@@ -57,8 +57,8 @@ export default function TestimonialsPage() {
         {testimonials.map((t, i) => (
           <figure
             key={t.quote}
-            className={`relative rounded-3xl border border-border p-7 transition-all hover:-translate-y-1 hover:shadow-lg ${
-              i % 5 === 0 ? "bg-brand text-brand-foreground border-brand" : "bg-card"
+            className={`relative rounded-3xl border border-border p-7 shadow-md transition-all hover:-translate-y-1 hover:shadow-xl ${
+              i % 5 === 0 ? "bg-brand-gradient text-brand-foreground border-brand" : "bg-card"
             }`}
           >
             <Quote className={`size-8 ${i % 5 === 0 ? "opacity-70" : "text-brand/60"}`} />

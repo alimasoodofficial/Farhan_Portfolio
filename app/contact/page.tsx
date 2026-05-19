@@ -24,7 +24,7 @@ export default function ContactPage() {
           <InfoCard icon={<MapPin className="size-5" />} title="Based in" value="Saudi Arabia" />
           <InfoCard icon={<Mail className="size-5" />} title="Email" value="farhan@example.com" />
           <InfoCard icon={<Phone className="size-5" />} title="Phone" value="+966 5•• ••• •••" />
-          <div className="rounded-2xl bg-brand text-brand-foreground p-6">
+          <div className="rounded-2xl bg-brand-gradient text-brand-foreground p-6 shadow-md transition-all hover:shadow-lg">
             <div className="text-sm opacity-80">Availability</div>
             <div className="mt-1 font-display text-xl font-bold">Sun – Thu</div>
             <div className="text-sm opacity-90">09:00 – 17:00 (AST)</div>
@@ -36,11 +36,11 @@ export default function ContactPage() {
             e.preventDefault();
             setSubmitted(true);
           }}
-          className="lg:col-span-2 rounded-3xl border border-border bg-card p-6 sm:p-8"
+          className="lg:col-span-2 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-md"
         >
           {submitted ? (
             <div className="py-16 text-center">
-              <div className="mx-auto size-14 grid place-items-center rounded-full bg-brand text-brand-foreground">
+              <div className="mx-auto size-14 grid place-items-center rounded-full bg-brand-gradient text-brand-foreground shadow-md">
                 <CheckCircle2 className="size-7" />
               </div>
               <div className="mt-4 font-display text-2xl font-bold">Request received!</div>
@@ -60,7 +60,7 @@ export default function ContactPage() {
                   {industries.map((i) => (
                     <label key={i} className="cursor-pointer">
                       <input type="radio" name="industry" className="peer sr-only" defaultChecked={i === "Cement"} />
-                      <span className="rounded-full border border-border bg-background px-3 py-1.5 text-sm transition-colors peer-checked:bg-brand peer-checked:text-brand-foreground peer-checked:border-brand">
+                      <span className="rounded-full border border-border bg-background px-3 py-1.5 text-sm transition-colors peer-checked:bg-brand-gradient peer-checked:text-brand-foreground peer-checked:border-brand-dark shadow-sm">
                         {i}
                       </span>
                     </label>
@@ -72,7 +72,7 @@ export default function ContactPage() {
                 <textarea rows={4} placeholder="Site, scope, timelines…" className={`${inputCls} resize-none`} />
               </Field>
 
-              <div className="mt-6 rounded-2xl border border-border bg-brand-soft/40 p-5">
+              <div className="mt-6 rounded-2xl border border-border bg-brand-soft/40 p-5 shadow-sm">
                 <div className="flex items-center gap-2 font-semibold">
                   <Calendar className="size-4 text-brand" /> Pick a slot
                 </div>
@@ -94,9 +94,9 @@ export default function ContactPage() {
                           key={s}
                           type="button"
                           onClick={() => setSlot(s)}
-                          className={`rounded-lg border px-3 py-1.5 text-sm transition-colors ${
+                          className={`rounded-lg border px-3 py-1.5 text-sm transition-colors shadow-sm ${
                             slot === s
-                              ? "bg-brand text-brand-foreground border-brand"
+                              ? "bg-brand-gradient text-brand-foreground border-brand shadow-md"
                               : "bg-card border-border hover:border-brand/40"
                           }`}
                         >
@@ -110,7 +110,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="mt-6 group inline-flex items-center gap-2 rounded-xl bg-highlight px-6 py-3 text-sm font-semibold text-highlight-foreground shadow-sm transition-all hover:scale-[1.03] hover:shadow-lg"
+                className="mt-6 group inline-flex items-center gap-2 rounded-xl bg-highlight px-6 py-3 text-sm font-semibold text-highlight-foreground shadow-md transition-all hover:scale-[1.03] hover:shadow-lg"
               >
                 Send & request booking
                 <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
@@ -124,7 +124,7 @@ export default function ContactPage() {
 }
 
 const inputCls =
-  "w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/20";
+  "w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-2 focus:ring-brand/20 shadow-sm";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -137,7 +137,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 
 function InfoCard({ icon, title, value }: { icon: React.ReactNode; title: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-5 flex items-start gap-3">
+    <div className="rounded-2xl border border-border bg-card p-5 flex items-start gap-3 shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg">
       <div className="size-10 grid place-items-center rounded-xl bg-brand-soft text-brand">{icon}</div>
       <div>
         <div className="text-xs text-muted-foreground">{title}</div>

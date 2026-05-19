@@ -28,7 +28,7 @@ export default function ProfileAdmin() {
       <Panel className="p-6">
         <div className="flex items-center justify-between">
           <div className="font-semibold">Education</div>
-          <button className="inline-flex items-center gap-1 rounded-lg bg-brand-soft text-brand px-3 py-1.5 text-xs font-semibold hover:bg-brand hover:text-brand-foreground transition">
+          <button className="inline-flex items-center gap-1 rounded-lg bg-brand-soft text-brand px-3 py-1.5 text-xs font-semibold hover:bg-brand-gradient hover:bg-brand-gradient-hover hover:text-brand-foreground transition shadow-sm hover:shadow-md">
             <Plus className="size-3.5" /> Add entry
           </button>
         </div>
@@ -47,7 +47,7 @@ export default function ProfileAdmin() {
       <Panel className="p-6">
         <div className="flex items-center justify-between">
           <div className="font-semibold">Experience entries</div>
-          <button className="inline-flex items-center gap-1 rounded-lg bg-brand-soft text-brand px-3 py-1.5 text-xs font-semibold hover:bg-brand hover:text-brand-foreground transition">
+          <button className="inline-flex items-center gap-1 rounded-lg bg-brand-soft text-brand px-3 py-1.5 text-xs font-semibold hover:bg-brand-gradient hover:bg-brand-gradient-hover hover:text-brand-foreground transition shadow-sm hover:shadow-md">
             <Plus className="size-3.5" /> Add role
           </button>
         </div>

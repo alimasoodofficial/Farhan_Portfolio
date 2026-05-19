@@ -14,9 +14,9 @@ export default function ResearchPage() {
         Selected publications on air quality, industrial emissions, and hazardous waste management.
       </p>
 
-      <article className="mt-10 group relative overflow-hidden rounded-3xl border border-border bg-card">
+      <article className="mt-10 group relative overflow-hidden rounded-3xl border border-border bg-card shadow-md transition-all hover:shadow-lg">
         <div className="grid md:grid-cols-5">
-          <div className="md:col-span-2 relative aspect-[4/3] md:aspect-auto bg-gradient-to-br from-brand to-brand/70 p-8 flex flex-col justify-between text-brand-foreground">
+          <div className="md:col-span-2 relative aspect-[4/3] md:aspect-auto bg-brand-gradient p-8 flex flex-col justify-between text-brand-foreground">
             <div className="absolute inset-0 bg-grid opacity-20" />
             <div className="relative">
               <div className="inline-flex items-center gap-1.5 rounded-full bg-highlight text-highlight-foreground px-3 py-1 text-xs font-semibold">
@@ -52,7 +52,7 @@ export default function ResearchPage() {
                 href="https://www.intechopen.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-brand-foreground transition-all hover:scale-[1.03]"
+                className="inline-flex items-center gap-2 rounded-xl bg-brand-gradient hover:bg-brand-gradient-hover px-4 py-2.5 text-sm font-semibold text-brand-foreground transition-all hover:scale-[1.03] shadow-md"
               >
                 Read on IntechOpen <ExternalLink className="size-4" />
               </a>

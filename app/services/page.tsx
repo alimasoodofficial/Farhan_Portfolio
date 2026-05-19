@@ -46,9 +46,9 @@ export default function ServicesPage() {
         {services.map((s) => {
           const Icon = s.icon;
           return (
-            <div key={s.title} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-brand/40">
+            <div key={s.title} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-md transition-all hover:-translate-y-1 hover:shadow-xl hover:border-brand/40">
               <div className="absolute -top-12 -right-12 size-40 rounded-full bg-highlight/20 blur-2xl opacity-0 group-hover:opacity-100 transition" />
-              <div className="size-12 grid place-items-center rounded-2xl bg-brand text-brand-foreground transition-transform group-hover:rotate-6">
+              <div className="size-12 grid place-items-center rounded-2xl bg-brand-gradient text-brand-foreground transition-transform group-hover:rotate-6">
                 <Icon className="size-6" />
               </div>
               <h2 className="mt-5 font-display text-xl font-bold">{s.title}</h2>
@@ -63,11 +63,11 @@ export default function ServicesPage() {
         })}
       </div>
 
-      <div className="mt-12 relative overflow-hidden rounded-3xl bg-highlight p-10 text-highlight-foreground">
+      <div className="mt-12 relative overflow-hidden rounded-3xl bg-highlight p-10 text-highlight-foreground shadow-xl">
         <div className="relative max-w-2xl">
           <h2 className="font-display text-2xl sm:text-3xl font-extrabold">Not sure where to start?</h2>
           <p className="mt-2">Tell me about your facility and I'll suggest the right combination.</p>
-          <Link href="/contact" className="mt-5 inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground hover:scale-[1.03] transition">
+          <Link href="/contact" className="mt-5 inline-flex items-center gap-2 rounded-xl bg-brand-gradient hover:bg-brand-gradient-hover px-5 py-3 text-sm font-semibold text-brand-foreground hover:scale-[1.03] transition shadow-md">
             Book a consultation <ArrowRight className="size-4" />
           </Link>
         </div>

@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2">
-            <span className="grid place-items-center size-9 rounded-xl bg-brand text-brand-foreground">
+            <span className="grid place-items-center size-9 rounded-xl bg-brand-gradient text-brand-foreground shadow-md">
               <Leaf className="size-5" />
             </span>
             <div className="font-display font-bold text-lg">Farhan Ali</div>

@@ -1,41 +1,37 @@
-"use client";
-
 import { GraduationCap, Award, Languages, BookOpen, Sparkles } from "lucide-react";
-import { useState } from "react";
-
-const tabs = ["Overview", "CV & Education", "Certifications"] as const;
-type Tab = (typeof tabs)[number];
 
 export default function AboutPage() {
-  const [tab, setTab] = useState<Tab>("Overview");
-
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-xs font-semibold tracking-widest uppercase text-brand">About me</div>
-      <h1 className="mt-2 font-display text-4xl sm:text-5xl font-extrabold">The engineer behind the readings.</h1>
-      <p className="mt-4 max-w-2xl text-muted-foreground">
-        I work where data, regulation and heavy machinery meet — so industries can keep moving without choking the air.
-      </p>
-
-      <div className="mt-10 flex gap-2 border-b border-border overflow-x-auto">
-        {tabs.map((t) => (
-          <button
-            key={t}
-            onClick={() => setTab(t)}
-            className={`relative px-4 py-3 text-sm font-medium transition-colors ${
-              tab === t ? "text-brand" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            {t}
-            {tab === t && <span className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-brand" />}
-          </button>
-        ))}
+    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      <div>
+        <div className="text-xs font-semibold tracking-widest uppercase text-brand">About me</div>
+        <h1 className="mt-2 font-display text-4xl sm:text-5xl font-extrabold">The engineer behind the readings.</h1>
+        <p className="mt-4 max-w-2xl text-muted-foreground">
+          I work where data, regulation and heavy machinery meet — so industries can keep moving without choking the air.
+        </p>
       </div>
 
-      <div className="mt-8">
-        {tab === "Overview" && <Overview />}
-        {tab === "CV & Education" && <CV />}
-        {tab === "Certifications" && <Certs />}
+      <div className="grid gap-16">
+        <section className="space-y-6">
+          <h2 className="font-display text-2xl font-bold tracking-tight border-b pb-3 border-border">
+            Overview
+          </h2>
+          <Overview />
+        </section>
+
+        <section className="space-y-6">
+          <h2 className="font-display text-2xl font-bold tracking-tight border-b pb-3 border-border">
+            Education & Awards
+          </h2>
+          <CV />
+        </section>
+
+        <section className="space-y-6">
+          <h2 className="font-display text-2xl font-bold tracking-tight border-b pb-3 border-border">
+            Certifications & Publications
+          </h2>
+          <Certs />
+        </section>
       </div>
     </div>
   );
@@ -44,7 +40,7 @@ export default function AboutPage() {
 function Overview() {
   return (
     <div className="grid md:grid-cols-3 gap-6">
-      <div className="md:col-span-2 rounded-2xl border border-border bg-card p-6">
+      <div className="md:col-span-2 rounded-2xl border border-border bg-card p-6 shadow-md transition-all hover:shadow-lg">
         <h2 className="font-display text-2xl font-bold">Hi, I'm Farhan 👋</h2>
         <p className="mt-3 text-muted-foreground leading-relaxed">
           I'm an Environmental Specialist & Engineer currently based in Saudi Arabia. My day-to-day
@@ -59,7 +55,7 @@ function Overview() {
           Outside of fieldwork, I write, mentor, and occasionally win awards for solar-powered dryers.
         </p>
       </div>
-      <div className="rounded-2xl bg-brand p-6 text-brand-foreground">
+      <div className="rounded-2xl bg-brand-gradient p-6 text-brand-foreground shadow-md transition-all hover:shadow-lg">
         <div className="text-sm opacity-80">Currently</div>
         <div className="mt-1 font-display text-xl font-bold">Environmental Specialist</div>
         <div className="mt-1 text-sm opacity-90">Renewable Environmental Company (REC), KSA</div>
@@ -81,7 +77,7 @@ function Overview() {
 function CV() {
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border border-border bg-card p-6">
+      <div className="rounded-2xl border border-border bg-card p-6 shadow-md transition-all hover:shadow-lg">
         <div className="flex items-start gap-4">
           <div className="size-11 grid place-items-center rounded-xl bg-brand-soft text-brand">
             <GraduationCap className="size-5" />
@@ -105,8 +101,8 @@ function CV() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-border bg-card p-6">
-        <div className="flex items-start gap-4">
+      <div className="rounded-2xl border border-border bg-card p-6 shadow-md transition-all hover:shadow-lg">
+        <div className="flex items-start gap-4 flex-wrap sm:flex-nowrap">
           <div className="size-11 grid place-items-center rounded-xl bg-highlight text-highlight-foreground">
             <Award className="size-5" />
           </div>
@@ -126,8 +122,8 @@ function CV() {
 function Certs() {
   return (
     <div className="grid md:grid-cols-2 gap-4">
-      <div className="rounded-2xl border border-border bg-card p-6">
-        <div className="size-10 grid place-items-center rounded-xl bg-brand text-brand-foreground">
+      <div className="rounded-2xl border border-border bg-card p-6 shadow-md transition-all hover:shadow-lg">
+        <div className="size-10 grid place-items-center rounded-xl bg-brand-gradient text-brand-foreground">
           <Sparkles className="size-5" />
         </div>
         <div className="mt-4 font-semibold">English Access Micro-Scholarship</div>
@@ -135,7 +131,7 @@ function Certs() {
           A two-year program by the U.S. Consulate focused on advanced English communication and leadership.
         </div>
       </div>
-      <div className="rounded-2xl border border-border bg-card p-6">
+      <div className="rounded-2xl border border-border bg-card p-6 shadow-md transition-all hover:shadow-lg">
         <div className="size-10 grid place-items-center rounded-xl bg-highlight text-highlight-foreground">
           <BookOpen className="size-5" />
         </div>
@@ -144,7 +140,7 @@ function Certs() {
           Book chapter contributor in <em>Advances and Challenges in Hazardous Waste Management</em>.
         </div>
       </div>
-      <div className="md:col-span-2 rounded-2xl border border-border bg-card p-6">
+      <div className="md:col-span-2 rounded-2xl border border-border bg-card p-6 shadow-md transition-all hover:shadow-lg">
         <div className="flex items-center gap-2">
           <Languages className="size-5 text-brand" />
           <div className="font-semibold">Languages</div>

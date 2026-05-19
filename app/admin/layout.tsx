@@ -2,25 +2,37 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Wrench, MessageSquareQuote, Newspaper, Calendar, User, BookOpen, ArrowLeft, Leaf } from "lucide-react";
+import { LayoutDashboard, Wrench, MessageSquareQuote, Newspaper, Calendar, User, BookOpen, ArrowLeft, Leaf, LogOut, type LucideIcon } from "lucide-react";
 
-const navItems = [
+interface NavItem {
+  readonly href: string;
+  readonly label: string;
+  readonly icon: LucideIcon;
+  readonly exact?: boolean;
+}
+
+const navItems: readonly NavItem[] = [
+  { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { href: "/admin/services", label: "Services", icon: Wrench },
   { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
   { href: "/admin/blogs", label: "Blogs", icon: Newspaper },
   { href: "/admin/bookings", label: "Bookings", icon: Calendar },
   { href: "/admin/profile", label: "About & CV", icon: User },
   { href: "/admin/articles", label: "Articles", icon: BookOpen },
-] as const;
+];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+
+  if (pathname === "/admin/login") {
+    return <>{children}</>;
+  }
 
   return (
     <div className="min-h-screen flex bg-muted/40">
       <aside className="hidden lg:flex w-64 shrink-0 flex-col border-r border-border bg-sidebar">
         <div className="h-16 flex items-center gap-2 px-5 border-b border-sidebar-border">
-          <span className="grid place-items-center size-9 rounded-xl bg-brand text-brand-foreground">
+          <span className="grid place-items-center size-9 rounded-xl bg-brand-gradient text-brand-foreground shadow-md">
             <Leaf className="size-5" />
           </span>
           <div>
@@ -32,13 +44,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="px-3 pt-2 pb-1 text-[11px] uppercase tracking-widest text-muted-foreground">Manage</div>
           {navItems.map((n) => {
             const Icon = n.icon;
-            const active = pathname?.startsWith(n.href);
+            const active = n.exact ? pathname === n.href : pathname?.startsWith(n.href);
             return (
               <Link
                 key={n.href}
                 href={n.href}
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  active ? "bg-brand text-brand-foreground shadow-sm" : "text-sidebar-foreground hover:bg-sidebar-accent"
+                  active ? "bg-brand-gradient text-brand-foreground shadow-md hover:bg-brand-gradient-hover" : "text-sidebar-foreground hover:bg-sidebar-accent"
                 }`}
               >
                 <Icon className="size-4" />
@@ -47,9 +59,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             );
           })}
         </nav>
-        <div className="p-3 border-t border-sidebar-border">
+        <div className="p-3 border-t border-sidebar-border space-y-1">
           <Link href="/" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:bg-sidebar-accent">
             <ArrowLeft className="size-4" /> Back to site
+          </Link>
+          <Link href="/admin/login" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-red-500 hover:bg-red-500/10 hover:text-red-600 transition-colors">
+            <LogOut className="size-4" /> Sign out
           </Link>
         </div>
       </aside>
@@ -62,20 +77,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
           <div className="flex items-center gap-2">
             <span className="hidden sm:inline text-xs text-muted-foreground">Signed in as</span>
-            <div className="size-8 rounded-full bg-brand text-brand-foreground grid place-items-center text-xs font-bold">FA</div>
+            <div className="size-8 rounded-full bg-brand-gradient text-brand-foreground grid place-items-center text-xs font-bold shadow-md animate-in fade-in zoom-in-50 duration-300">FA</div>
           </div>
         </header>
 
         {/* mobile nav */}
         <div className="lg:hidden border-b border-border bg-card px-2 py-2 flex gap-1 overflow-x-auto">
           {navItems.map((n) => {
-            const active = pathname?.startsWith(n.href);
+            const active = n.exact ? pathname === n.href : pathname?.startsWith(n.href);
             return (
               <Link
                 key={n.href}
                 href={n.href}
-                className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium ${
-                  active ? "bg-brand text-brand-foreground" : "bg-muted text-muted-foreground"
+                className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  active ? "bg-brand-gradient text-brand-foreground shadow-md" : "bg-muted text-muted-foreground shadow-sm"
                 }`}
               >
                 {n.label}

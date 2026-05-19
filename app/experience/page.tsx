@@ -82,9 +82,9 @@ export default function ExperiencePage() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium border transition-all ${
+            className={`rounded-full px-4 py-1.5 text-sm font-medium border transition-all shadow-sm ${
               filter === f
-                ? "bg-brand text-brand-foreground border-brand shadow-sm"
+                ? "bg-brand-gradient text-brand-foreground border-brand hover:bg-brand-gradient-hover shadow-md"
                 : "bg-card text-muted-foreground border-border hover:border-brand/40 hover:text-foreground"
             }`}
           >
@@ -96,10 +96,10 @@ export default function ExperiencePage() {
       <ol className="mt-10 relative border-l-2 border-dashed border-brand/30 pl-6 sm:pl-8 space-y-8">
         {visible.map((r) => (
           <li key={r.company} className="relative">
-            <span className="absolute -left-[34px] sm:-left-[42px] top-1 grid place-items-center size-7 rounded-full bg-brand text-brand-foreground ring-4 ring-background">
+            <span className="absolute -left-[34px] sm:-left-[42px] top-1 grid place-items-center size-7 rounded-full bg-brand-gradient text-brand-foreground ring-4 ring-background shadow-sm">
               <Briefcase className="size-3.5" />
             </span>
-            <div className="rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <div className="font-display text-lg font-bold">{r.title}</div>
@@ -115,7 +115,7 @@ export default function ExperiencePage() {
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 {r.bullets.map((b) => (
                   <li key={b} className="flex gap-2">
-                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand" />
+                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand-gradient" />
                     <span>{b}</span>
                   </li>
                 ))}

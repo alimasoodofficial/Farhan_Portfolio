@@ -18,7 +18,7 @@ export default function TestimonialsAdmin() {
       <AdminPageHeader title="Testimonials" subtitle="Review, approve, or edit client reviews." actionLabel="Add testimonial" />
       <div className="grid md:grid-cols-2 gap-4">
         {list.map((t) => (
-          <div key={t.quote} className="rounded-2xl border border-border bg-card p-5">
+          <div key={t.quote} className="rounded-2xl border border-border bg-card p-5 shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="font-semibold">{t.name}</div>
@@ -31,7 +31,7 @@ export default function TestimonialsAdmin() {
             </div>
             <p className="mt-3 text-sm text-muted-foreground">"{t.quote}"</p>
             <div className="mt-4 flex items-center gap-2">
-              <button className="inline-flex items-center gap-1 rounded-lg bg-brand px-3 py-1.5 text-xs font-semibold text-brand-foreground hover:scale-[1.03] transition">
+              <button className="inline-flex items-center gap-1 rounded-lg bg-brand-gradient hover:bg-brand-gradient-hover px-3 py-1.5 text-xs font-semibold text-brand-foreground hover:scale-[1.03] transition shadow-md">
                 <Check className="size-3.5" /> Approve
               </button>
               <button className="inline-flex items-center gap-1 rounded-lg border border-border px-3 py-1.5 text-xs font-medium hover:bg-muted">

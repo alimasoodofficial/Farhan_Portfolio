@@ -11,7 +11,6 @@ const links = [
   { href: "/research", label: "Research" },
   { href: "/blogs", label: "Blogs" },
   { href: "/testimonials", label: "Testimonials" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
@@ -22,7 +21,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="grid place-items-center size-9 rounded-xl bg-brand text-brand-foreground shadow-sm transition-transform group-hover:rotate-6">
+          <span className="grid place-items-center size-9 rounded-xl bg-brand-gradient text-brand-foreground shadow-md transition-transform group-hover:rotate-6">
             <Leaf className="size-5" />
           </span>
           <div className="leading-tight">

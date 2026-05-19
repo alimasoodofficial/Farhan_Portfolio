@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, MapPin, Sparkles, Wind, FlaskConical, BookOpen, Briefcase, Award, Leaf } from "lucide-react";
+import TextType from "@/components/ui/TextType";
 
 export default function Home() {
   return (
@@ -17,13 +18,23 @@ export default function Home() {
             <Badge tone="muted"><Sparkles className="size-3.5" /> 4+ years experience</Badge>
           </div>
 
-          <h1 className="text-balance font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] text-foreground">
-            Engineering a <span className="text-brand">Cleaner</span>,<br className="hidden sm:block" />
+          <h1 className="text-balance font-display text-3xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] text-foreground">
+            <span className="text-brand">Engineering </span> a Cleaner<br className="" />
             <span className="relative inline-block">
               <span className="relative z-10">Greener</span>
               <span className="absolute inset-x-0 bottom-1 h-3 sm:h-4 bg-highlight/70 -z-0 rounded-sm" />
             </span>{" "}
-            Tomorrow.
+            <TextType 
+              text={["Tomorrow.", "Future.", "World."]} 
+              textColors={["var(--brand)"]} 
+              as="span" 
+              className="text-brand inline-block" 
+              typingSpeed={80}
+              deletingSpeed={40}
+              pauseDuration={2000}
+              showCursor={true}
+              cursorClassName="text-brand"
+            />
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
@@ -33,7 +44,7 @@ export default function Home() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/experience" className="group inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground shadow-sm transition-all hover:scale-[1.03] hover:shadow-lg">
+            <Link href="/experience" className="group inline-flex items-center gap-2 rounded-xl bg-brand-gradient hover:bg-brand-gradient-hover px-5 py-3 text-sm font-semibold text-brand-foreground shadow-md transition-all hover:scale-[1.03] hover:shadow-lg">
               View My Work <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link href="/contact" className="group inline-flex items-center gap-2 rounded-xl bg-highlight px-5 py-3 text-sm font-semibold text-highlight-foreground shadow-sm transition-all hover:scale-[1.03] hover:shadow-lg">
@@ -68,8 +79,8 @@ export default function Home() {
             { icon: <Leaf className="size-5" />, title: "NCEC / NEQS Audits", desc: "Stay on the right side of regulators in KSA & Pakistan." },
             { icon: <BookOpen className="size-5" />, title: "EMP & Permitting", desc: "Management plans that work on paper and in the field." },
           ].map((s) => (
-            <div key={s.title} className="group rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-brand/40">
-              <div className="size-10 grid place-items-center rounded-xl bg-brand-soft text-brand transition-colors group-hover:bg-brand group-hover:text-brand-foreground">
+            <div key={s.title} className="group rounded-2xl border border-border bg-card p-5 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg hover:border-brand/40">
+              <div className="size-10 grid place-items-center rounded-xl bg-brand-soft text-brand transition-colors group-hover:bg-brand-gradient group-hover:text-brand-foreground">
                 {s.icon}
               </div>
               <div className="mt-4 font-semibold">{s.title}</div>
@@ -97,8 +108,8 @@ export default function Home() {
             { tag: "Tech", title: "BAM 1020 vs Thermo iQ — a field analyst's take", date: "Coming soon" },
             { tag: "Sustainability", title: "Lessons from solarizing a fluidized bed dryer", date: "Coming soon" },
           ].map((b) => (
-            <article key={b.title} className="group rounded-2xl overflow-hidden border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-lg">
-              <div className="aspect-[16/10] bg-gradient-to-br from-brand/80 to-brand relative overflow-hidden">
+            <article key={b.title} className="group rounded-2xl overflow-hidden border border-border bg-card shadow-md transition-all hover:-translate-y-1 hover:shadow-lg">
+              <div className="aspect-[16/10] bg-brand-gradient relative overflow-hidden">
                 <div className="absolute inset-0 bg-grid opacity-20" />
                 <div className="absolute bottom-3 left-3">
                   <span className="rounded-full bg-highlight px-2.5 py-1 text-[11px] font-semibold text-highlight-foreground">
@@ -122,7 +133,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24">
-        <div className="relative overflow-hidden rounded-3xl bg-brand p-10 sm:p-14 text-brand-foreground">
+        <div className="relative overflow-hidden rounded-3xl bg-brand-gradient p-10 sm:p-14 text-brand-foreground shadow-xl">
           <div className="absolute -top-20 -right-20 size-72 rounded-full bg-highlight/30 blur-3xl" />
           <div className="relative max-w-2xl">
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold">Got an emission to measure or a permit to chase?</h2>
@@ -154,9 +165,9 @@ function StatCard({
   icon, value, label, tone = "muted", big = false, className = "",
 }: { icon: React.ReactNode; value: string; label: string; tone?: "brand" | "highlight" | "muted"; big?: boolean; className?: string }) {
   const tones = {
-    brand: "bg-brand text-brand-foreground",
-    highlight: "bg-highlight text-highlight-foreground",
-    muted: "bg-card text-foreground border border-border",
+    brand: "bg-brand-gradient text-brand-foreground shadow-md",
+    highlight: "bg-highlight text-highlight-foreground shadow-md",
+    muted: "bg-card text-foreground border border-border shadow-md",
   } as const;
   return (
     <div className={`rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-lg ${tones[tone]} ${className}`}>

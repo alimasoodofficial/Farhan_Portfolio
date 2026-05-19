@@ -14,7 +14,7 @@ const posts = [
   { tag: "Career", title: "What I Wish I Knew Entering Environmental Consulting", excerpt: "Five lessons from four years of fieldwork and a lot of long drives.", date: "Coming soon", read: "6 min" },
 ];
 
-const colors = ["from-brand to-brand/70", "from-highlight to-highlight/70", "from-teal-700 to-teal-500"];
+const colors = ["from-brand to-brand-dark", "from-highlight/90 to-brand", "from-brand-dark/80 to-brand"];
 
 export default function BlogsPage() {
   return (
@@ -29,7 +29,7 @@ export default function BlogsPage() {
         {posts.map((p, i) => (
           <article
             key={p.title}
-            className="group flex flex-col rounded-3xl overflow-hidden border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-xl"
+            className="group flex flex-col rounded-3xl overflow-hidden border border-border bg-card shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
           >
             <div className={`aspect-[16/10] relative bg-gradient-to-br ${colors[i % colors.length]}`}>
               <div className="absolute inset-0 bg-grid opacity-25" />

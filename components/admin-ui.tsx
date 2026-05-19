@@ -32,7 +32,7 @@ export function AdminPageHeader({
         )}
         <button
           onClick={onAction}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-brand px-3.5 py-2 text-sm font-semibold text-brand-foreground hover:scale-[1.03] transition"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-brand-gradient hover:bg-brand-gradient-hover px-3.5 py-2 text-sm font-semibold text-brand-foreground hover:scale-[1.03] transition shadow-md"
         >
           <Plus className="size-4" /> {actionLabel}
         </button>
@@ -43,7 +43,7 @@ export function AdminPageHeader({
 
 export function Panel({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`rounded-2xl border border-border bg-card ${className}`}>{children}</div>
+    <div className={`rounded-2xl border border-border bg-card shadow-md ${className}`}>{children}</div>
   );
 }
 
@@ -52,7 +52,7 @@ export function StatusPill({ tone, label }: { tone: "success" | "warning" | "neu
     success: "bg-green-100 text-green-700 border-green-200",
     warning: "bg-yellow-100 text-yellow-800 border-yellow-200",
     neutral: "bg-muted text-muted-foreground border-border",
-    brand: "bg-brand-soft text-brand border-brand/20",
+    brand: "bg-brand-gradient text-brand-foreground border-brand-dark/20 shadow-sm",
   } as const;
   return (
     <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${map[tone]}`}>
