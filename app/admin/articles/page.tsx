@@ -1,11 +1,9 @@
 import { AdminPageHeader, Panel } from "@/components/admin-ui";
-import { ExternalLink, Pencil, Trash2, Plus } from "lucide-react";
+import { ExternalLink, Pencil, Trash2, Plus, FileText } from "lucide-react";
 
 export const metadata = {
   title: "Admin Articles — Farhan Ali",
 };
-
-const inputCls = "w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20";
 
 const articles = [
   {
@@ -17,45 +15,52 @@ const articles = [
 
 export default function ArticlesAdmin() {
   return (
-    <div className="grid lg:grid-cols-5 gap-6">
+    <div className="max-w-[1200px] mx-auto grid lg:grid-cols-5 gap-6">
+      {/* Add form */}
       <div className="lg:col-span-2">
-        <AdminPageHeader title="Add article" subtitle="Publish a new research entry." actionLabel="Save" withSearch={false} />
+        <AdminPageHeader title="Add Article" subtitle="Publish a new research entry." actionLabel="Save" withSearch={false} />
         <Panel className="p-6 space-y-3">
-          <Field label="Title"><input className={inputCls} placeholder="Paper title" /></Field>
-          <Field label="Publication"><input className={inputCls} placeholder="Journal or publisher" /></Field>
-          <Field label="Publication date"><input type="date" className={inputCls} /></Field>
+          <Field label="Title"><input className="admin-input" placeholder="Paper title" /></Field>
+          <Field label="Publication"><input className="admin-input" placeholder="Journal or publisher" /></Field>
+          <Field label="Publication date"><input type="date" className="admin-input" /></Field>
           <Field label="External URL">
             <div className="flex">
-              <span className="inline-flex items-center px-3 rounded-l-lg border border-input border-r-0 bg-muted text-xs text-muted-foreground">https://</span>
-              <input className={`${inputCls} rounded-l-none`} placeholder="example.com/your-paper" />
+              <span className="inline-flex items-center px-3 rounded-l-lg border border-[var(--admin-border-strong)] border-r-0 bg-[var(--admin-surface-alt)] text-xs text-[var(--admin-muted)]">https://</span>
+              <input className="admin-input !rounded-l-none" placeholder="example.com/your-paper" />
             </div>
           </Field>
-          <button className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-brand-foreground hover:scale-[1.03] transition">
+          <button className="admin-btn-primary mt-2">
             <Plus className="size-4" /> Add article
           </button>
         </Panel>
       </div>
 
+      {/* Published list */}
       <div className="lg:col-span-3">
         <div className="mb-6">
-          <h2 className="font-display text-xl font-bold">Published articles</h2>
-          <p className="text-sm text-muted-foreground">Edit or remove existing entries.</p>
+          <div className="flex items-center gap-2 mb-1">
+            <div className="size-8 rounded-lg bg-indigo-500/15 flex items-center justify-center text-indigo-400">
+              <FileText className="size-4" />
+            </div>
+            <h2 className="font-display text-xl font-bold text-[var(--admin-fg)]">Published Articles</h2>
+          </div>
+          <p className="text-sm text-[var(--admin-muted)] ml-10">Edit or remove existing entries.</p>
         </div>
-        <Panel className="divide-y divide-border">
+        <Panel className="divide-y divide-[var(--admin-border)]">
           {articles.map((a) => (
-            <div key={a.title} className="p-5 flex items-start gap-3">
-              <div className="flex-1">
-                <div className="font-medium">{a.title}</div>
-                <div className="text-xs text-muted-foreground mt-1">{a.date}</div>
-                <a href={a.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-brand hover:underline mt-2">
+            <div key={a.title} className="p-5 flex items-start gap-3 hover:bg-[var(--admin-surface-alt)] transition-colors">
+              <div className="flex-1 min-w-0">
+                <div className="font-medium text-[var(--admin-fg)]">{a.title}</div>
+                <div className="text-xs text-[var(--admin-muted)] mt-1">{a.date}</div>
+                <a href={a.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-[var(--admin-accent)] hover:underline mt-2">
                   {a.url} <ExternalLink className="size-3.5" />
                 </a>
               </div>
-              <div className="flex items-center gap-1">
-                <button className="p-2 rounded-lg hover:bg-muted text-muted-foreground hover:text-brand">
+              <div className="flex items-center gap-0.5 shrink-0">
+                <button className="admin-btn-ghost hover:!text-[var(--admin-accent)]" title="Edit">
                   <Pencil className="size-4" />
                 </button>
-                <button className="p-2 rounded-lg hover:bg-muted text-muted-foreground hover:text-destructive">
+                <button className="admin-btn-ghost hover:!text-red-400" title="Delete">
                   <Trash2 className="size-4" />
                 </button>
               </div>
@@ -70,7 +75,7 @@ export default function ArticlesAdmin() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="block text-xs font-medium text-muted-foreground mb-1">{label}</span>
+      <span className="block text-xs font-medium text-[var(--admin-muted)] mb-1.5">{label}</span>
       {children}
     </label>
   );

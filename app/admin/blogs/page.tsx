@@ -1,5 +1,5 @@
 import { AdminPageHeader, Panel, StatusPill } from "@/components/admin-ui";
-import { Bold, Italic, Link2, List, Heading2, Image } from "lucide-react";
+import { Bold, Italic, Link2, List, Heading2, Image, Eye } from "lucide-react";
 
 export const metadata = {
   title: "Admin Blogs — Farhan Ali",
@@ -13,46 +13,53 @@ const posts = [
 
 export default function BlogsAdmin() {
   return (
-    <div className="grid lg:grid-cols-3 gap-6">
+    <div className="max-w-[1200px] mx-auto grid lg:grid-cols-3 gap-6">
+      {/* ─── Editor ─── */}
       <div className="lg:col-span-2">
-        <AdminPageHeader title="Blog editor" subtitle="Compose and publish articles." actionLabel="Save draft" withSearch={false} />
+        <AdminPageHeader title="Blog Editor" subtitle="Compose and publish articles." actionLabel="Save draft" withSearch={false} />
         <Panel className="p-5">
           <input
             placeholder="Post title…"
-            className="w-full text-2xl font-display font-bold bg-transparent outline-none placeholder:text-muted-foreground"
+            className="admin-input text-xl font-display font-bold !bg-transparent !border-none !p-0 !ring-0 !shadow-none"
             defaultValue="Decoding Saudi NCEC Compliance in 2025"
           />
-          <div className="mt-4 flex items-center gap-1 border border-border rounded-xl p-1 bg-muted/40 w-fit">
+          <div className="mt-4 flex items-center gap-1 border border-[var(--admin-border)] rounded-xl p-1 bg-[var(--admin-surface-alt)] w-fit">
             {[Heading2, Bold, Italic, List, Link2, Image].map((I, i) => (
-              <button key={i} className="p-2 rounded-lg hover:bg-card text-muted-foreground hover:text-brand">
+              <button key={i} className="admin-toolbar-btn">
                 <I className="size-4" />
               </button>
             ))}
           </div>
           <textarea
             rows={14}
-            className="mt-4 w-full bg-transparent outline-none resize-none text-sm leading-relaxed"
+            className="admin-input mt-4 !bg-transparent !border-none !p-0 !ring-0 !shadow-none resize-none leading-relaxed text-[var(--admin-fg-secondary)]"
             defaultValue={`What's changed, what hasn't, and the three things every industrial site should be doing this quarter…\n\n## Background\n\nThe Saudi NCEC framework continues to evolve.\n\n## Key updates\n\n- Stack emission frequencies\n- Reporting cadence\n- Audit thresholds`}
           />
         </Panel>
       </div>
 
+      {/* ─── Sidebar ─── */}
       <div className="space-y-4">
         <Panel className="p-5">
-          <div className="font-semibold">Publish</div>
-          <div className="mt-3 space-y-2 text-sm">
-            <button className="w-full rounded-lg bg-brand-gradient hover:bg-brand-gradient-hover py-2 font-semibold text-brand-foreground hover:scale-[1.02] transition shadow-md">Publish</button>
-            <button className="w-full rounded-lg border border-border py-2 font-medium hover:bg-muted">Save draft</button>
+          <div className="font-semibold text-sm text-[var(--admin-fg)]">Publish</div>
+          <div className="mt-3 space-y-2">
+            <button className="admin-btn-primary w-full justify-center py-2.5">Publish</button>
+            <button className="admin-btn-secondary w-full justify-center py-2.5">
+              <Eye className="size-4" /> Preview
+            </button>
           </div>
         </Panel>
-        <Panel>
-          <div className="px-5 py-3 border-b border-border font-semibold">All posts</div>
-          <ul className="divide-y divide-border">
+
+        <Panel className="overflow-hidden">
+          <div className="px-5 py-3.5 border-b border-[var(--admin-border)] font-semibold text-sm text-[var(--admin-fg)]">
+            All posts
+          </div>
+          <ul>
             {posts.map((p) => (
-              <li key={p.title} className="px-5 py-3 flex items-center justify-between gap-3 text-sm hover:bg-muted/40">
-                <div>
-                  <div className="font-medium">{p.title}</div>
-                  <div className="text-xs text-muted-foreground">{p.date}</div>
+              <li key={p.title} className="px-5 py-3 flex items-center justify-between gap-3 text-sm hover:bg-[var(--admin-surface-alt)] transition-colors border-b border-[var(--admin-border)] last:border-b-0 cursor-pointer">
+                <div className="min-w-0">
+                  <div className="font-medium text-[var(--admin-fg)] truncate">{p.title}</div>
+                  <div className="text-xs text-[var(--admin-muted)]">{p.date}</div>
                 </div>
                 <StatusPill
                   tone={p.status === "Published" ? "success" : p.status === "Scheduled" ? "brand" : "warning"}
