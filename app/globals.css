@@ -50,8 +50,12 @@
   --color-highlight-foreground: var(--highlight-foreground);
   --color-highlight-soft: var(--highlight-soft);
 
-  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+
+  --font-weight-extrabold: 900;
+  --font-weight-bold: 700;
+  --font-weight-normal: 400;
 
   /* Register shadows in theme */
   --shadow-sm: var(--shadow-sm);
@@ -166,7 +170,20 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  p {
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
   a, button, [role="button"], input[type="submit"], input[type="reset"], input[type="button"], label[for], select, summary { cursor: pointer; }
 }
 
