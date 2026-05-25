@@ -7,13 +7,7 @@ export const metadata = {
 
 export default function TestimonialsPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-xs font-semibold tracking-widest uppercase text-brand">Testimonials</div>
-      <h1 className="mt-2 font-display text-4xl sm:text-5xl font-extrabold">Trusted across heavy industry.</h1>
-      <p className="mt-4 max-w-2xl text-muted-foreground">
-        Anonymised feedback from clients in cement, petroleum, textile, and beyond.
-      </p>
-
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-8">
       <TestimonialsGrid />
     </div>
   );

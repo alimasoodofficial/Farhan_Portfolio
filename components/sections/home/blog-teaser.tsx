@@ -9,19 +9,22 @@ export function BlogTeaser() {
       tag: "Regulation", 
       title: "Decoding Saudi NCEC compliance in 2025", 
       date: "Compliance Update",
-      img: "/images/farhan-ali-website-27.webp"
+      img: "/images/farhan-ali-website-27.webp",
+      slug: "decoding-saudi-ncec-compliance-2025"
     },
     { 
       tag: "Instrumentation", 
       title: "BAM 1020 vs Thermo iQ — a field analyst's take", 
       date: "Instrument Review",
-      img: "/images/farhan-ali-website-10.webp"
+      img: "/images/farhan-ali-website-10.webp",
+      slug: "bam-1020-vs-thermo-scientific-iq"
     },
     { 
       tag: "Sustainability", 
       title: "Lessons from solarizing a fluidized bed dryer", 
       date: "Engineering Case Study",
-      img: "/images/farhan-ali-website-20.webp"
+      img: "/images/farhan-ali-website-20.webp",
+      slug: "solarizing-industrial-heat"
     },
   ];
 
@@ -35,8 +38,9 @@ export function BlogTeaser() {
       
       <div className="mt-10 grid md:grid-cols-3 gap-5">
         {blogs.map((b) => (
-          <article 
+          <Link 
             key={b.title} 
+            href={`/blogs/${b.slug}`}
             className="group rounded-3xl overflow-hidden border border-border bg-card/65 backdrop-blur-md shadow-sm hover:border-brand/40 hover:-translate-y-1.5 hover:shadow-md transition-all duration-300 dark:bg-card/45 flex flex-col h-full"
           >
             {/* Visual Header */}
@@ -70,7 +74,7 @@ export function BlogTeaser() {
                 Read Publication Report <ArrowRight className="size-3.5 text-brand transition-transform group-hover:translate-x-0.5" />
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
 

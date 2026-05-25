@@ -12,35 +12,15 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="relative overflow-hidden min-h-screen pt-12 pb-24 z-0">
+    <section className="relative overflow-hidden min-h-screen pb-24 z-0">
       {/* Premium Ambient Backgrounds */}
-      <div className="absolute inset-0 bg-grid opacity-35 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_80%)]" />
+      <div className="absolute inset-0 bg-grid opacity-35 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_80%)] pointer-events-none" />
       <div className="absolute top-1/4 -left-48 size-96 rounded-full bg-brand/10 dark:bg-brand/20 blur-3xl -z-10 pointer-events-none" />
       <div className="absolute bottom-1/4 -right-48 size-96 rounded-full bg-highlight/15 dark:bg-highlight/10 blur-3xl -z-10 pointer-events-none" />
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-24 relative">
-        {/* Header Section */}
-        <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand-soft/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand dark:bg-brand-soft/10">
-            <span className="size-1.5 rounded-full bg-brand animate-pulse" />
-            About Farhan Ali
-          </div>
-          
-          <h1 className="mt-2 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.15]">
-            The engineer behind the{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-brand">readings.</span>
-              <span className="absolute inset-x-0 bottom-1 h-3 sm:h-4 bg-highlight/70 dark:bg-highlight/50 -z-10 rounded-sm" />
-            </span>
-          </h1>
-          
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
-            I operate at the intersection of heavy machinery, precise data pipelines, and strict environmental compliance — ensuring industries run efficiently while protecting ambient air resources.
-          </p>
-        </div>
-
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-16 pt-16 relative">
         {/* Modular Grid Sections */}
-        <div className="grid gap-24">
+        <div className="grid gap-20">
           {/* Section 1: Narrative Biography */}
           <section className="space-y-6">
             <div className="flex items-center gap-3 border-b border-border/80 pb-4">

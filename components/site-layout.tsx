@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PageBanner } from "@/components/page-banner";
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -15,7 +16,10 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1">
+        <PageBanner />
+        {children}
+      </main>
       <SiteFooter />
     </div>
   );
